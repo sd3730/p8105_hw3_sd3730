@@ -1,0 +1,13 @@
+---
+title: "p8105_hw3_sd3730"
+author: "Stacey Dai"
+date: "2024-10-13"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, message = FALSE)
+````
+
+# Problem 1
+
