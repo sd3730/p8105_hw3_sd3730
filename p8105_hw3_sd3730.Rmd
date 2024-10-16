@@ -158,4 +158,22 @@ The category with the highest counts is the "More than HS" category, where there
 Overall, the data indicates that females are represented slightly more in the less than HS and more than HS categories, while males are slightly more represented in the HS equivalent category. This could point to varying educational trends and social factors affecting education levels by gender within this population.
 This distribution can prompt further analysis into factors that influence educational attainment, such as socioeconomic status, cultural expectations, and access to educational resources for each gender.
 
+#### Visualization of Age Distributions by Sex and Education
+```{r p2_visual}
+library(ggplot2)
+
+cleaned_data = merged_data %>%
+  filter(!is.na(age) & !is.na(education))
+
+ggplot(merged_data, aes(x = age, fill = sex)) +
+  geom_histogram(position = "dodge", binwidth = 5) +
+  facet_wrap(~education) +
+  labs(
+    title = "Age Distribution by Education Level and Sex",
+    x = "Age",
+    y = "Count",
+    fill = "Sex"
+  ) +
+  theme_minimal()
+```
 
