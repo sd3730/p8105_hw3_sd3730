@@ -107,3 +107,25 @@ names(demographic_data) = c("SEQN", "sex", "age", "BMI", "education")
 accelerometer_data = read_csv (file = "./data/nhanes_accel.csv")
 ```
 
+#### Clean and merge the datasets
+We will filter out participants under 21 years of age and handle missing values. We will also tidy the data so that it is long-form and each observation represents a minute-by-minute MIMS reading for a participant.
+
+```{r p2_cleanup}
+library(tidyr)
+
+demographic_data_clean = demographic_data %>%
+  filter(age >= 21) %>%
+  drop_na()
+
+accelerometer_data_long = accelerometer_data %>%
+  pivot_longer(
+    cols = starts_with("min"),
+    names_to = "minute",
+    values_to = "value"
+  )
+```
+
+
+
+
+
