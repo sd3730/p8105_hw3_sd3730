@@ -261,3 +261,15 @@ july2024 = read_csv("./citibike/July 2024 Citi.csv")
 citi_bike_data = bind_rows(jan2020, jan2024, july2020, july2024)
 ```
 
+#### Clean and tidy the dataset
+```{r p3_merge}
+citi_bike_data = citi_bike_data %>%
+  mutate(
+    duration = as.numeric(duration),
+    year = year(Sys.Date()),
+    month = month(Sys.Date(), label = TRUE, abbr = TRUE),
+    day_of_week = weekdays(as.Date(Sys.Date()))
+  ) %>%
+  
+  filter(duration > 0 & duration < 240)
+```
