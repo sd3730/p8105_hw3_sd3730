@@ -101,6 +101,6 @@ From the ridge plot, we see a multimodal density of snowfall within a given year
 #### Load the dataset
 ```{r p2_setup, message = FALSE}
 library(readr)
-demographic_data = read_csv (file = "./data/nhanes_covar.csv")
+demographic_data = read_csv (file = "./data/nhanes_covar.csv", skip = 3)
 accelerometer_data = read_csv (file = "./data/nhanes_accel.csv")
 ```
