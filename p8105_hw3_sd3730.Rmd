@@ -39,3 +39,18 @@ data("ny_noaa")
 ```
 
 This dataset contains `r nrow(ny_noaa)` rows and `r ncol(ny_noaa)` columns. Variables include weather station id, date of observation,  (tenths of mm), snowfall (mm), snow depth (mm), and min and max temperature (tenths of degrees C).
+
+Below we clean the data, creating separate variables for year, month, and day and converting `tmax` and `tmin` to numeric. We find that 0 is the most commonly observed value for snowfall. This is because most days of the year, it does not snow at all in NY. The second most commonly observed value is `NA`, indicating missingness. Other common values are 13, 25, and 51, suggesting that snowfall is originally recorded in fractions of an inch and converted to mm.
+
+```{r cleandata}
+ny_noaa %>% 
+  count(snow) %>%
+  arrange(desc(n))
+
+ny_noaa = 
+  ny_noaa %>% 
+  separate(date, into = c("year", "month", "day"), convert = TRUE) %>% 
+  mutate(
+    tmax = as.numeric(tmax),
+    tmin = as.numeric(tmin))
+```
