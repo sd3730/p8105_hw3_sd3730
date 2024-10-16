@@ -32,7 +32,10 @@ scale_fill_discrete = scale_fill_viridis_d
 ```
 
 # Problem 1
+
+#### Load the ny_noaa dataset
 ```{r}
 data("ny_noaa")
 ```
 
+This dataset contains `r nrow(ny_noaa)` rows and `r ncol(ny_noaa)` columns. Variables include weather station id, date of observation,  (tenths of mm), snowfall (mm), snow depth (mm), and min and max temperature (tenths of degrees C).
