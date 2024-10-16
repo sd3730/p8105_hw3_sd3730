@@ -213,4 +213,10 @@ activity_time_course = merged_data %>%
   ungroup()
 ```
 
+This is to convert the minute variable to hours.
+```{r min_to_hours}
+activity_time_course = activity_time_course %>%
+  mutate(hour = as.numeric(minute) / 60)
+```
+
 
