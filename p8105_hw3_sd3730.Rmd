@@ -32,4 +32,7 @@ scale_fill_discrete = scale_fill_viridis_d
 ```
 
 # Problem 1
+```{r}
+data("ny_noaa")
+```
 
