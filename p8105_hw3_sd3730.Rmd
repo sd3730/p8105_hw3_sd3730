@@ -125,6 +125,12 @@ accelerometer_data_long = accelerometer_data %>%
   )
 ```
 
+```{r p2_merge}
+library(dplyr)
+
+merged_data = accelerometer_data_long %>%
+  left_join(demographic_data_clean, by = "SEQN")
+```
 
 
 
