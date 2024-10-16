@@ -101,6 +101,7 @@ From the ridge plot, we see a multimodal density of snowfall within a given year
 #### Load the dataset
 ```{r p2_setup, message = FALSE}
 library(readr)
+
 demographic_data = read_csv (file = "./data/nhanes_covar.csv", skip = 4)
 names(demographic_data) = c("SEQN", "sex", "age", "BMI", "education")
 
@@ -245,4 +246,18 @@ The title of the graph clearly indicates the graph's purpose, showing the activi
 * The "More than HS" panel shows both sexes maintaining higher activity levels throughout the day compared to the other groups, suggesting that individuals with higher educational attainment might be more active overall. The gap between males and females remains, but it is less pronounced than in the other categories.
 
 Overall, this graph illustrates clear daily rhythms of physical activity that vary by educational attainment and sex. Males consistently demonstrate higher activity levels than females, and those with higher educational levels appear to maintain higher activity throughout the day. 
+
+# Problem 3
+
+#### Import the NYC Citi Bike System data
+```{r p3_setup}
+library(lubridate)
+
+jan2020 = read_csv("./citibike/Jan 2020 Citi.csv")
+jan2024 = read_csv("./citibike/Jan 2024 Citi.csv")
+july2020 = read_csv("./citibike/July 2020 Citi.csv")
+july2024 = read_csv("./citibike/July 2024 Citi.csv")
+
+citi_bike_data = bind_rows(jan2020, jan2024, july2020, july2024)
+```
 
