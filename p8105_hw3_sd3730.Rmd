@@ -188,3 +188,16 @@ total_activity_data <- merged_data %>%
   summarize(total_activity = sum(value, na.rm = TRUE))
 ```
 
+Plot total activity vs age, separated by sex and education level
+```{r activity_plot}
+ggplot(total_activity_data, aes(x = age, y = total_activity, color = sex)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "loess") +
+  facet_wrap(~education) +
+  labs(
+    title = "Total Daily Activity by Age, Sex, and Education Level",
+    x = "Age",
+    y = "Total Activity (MIMS)"
+  ) +
+  theme_minimal()
+```
