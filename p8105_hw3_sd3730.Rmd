@@ -130,16 +130,29 @@ After cleaning both datasets, merge them on the participant ID to create a singl
 library(dplyr)
 
 merged_data = accelerometer_data_long %>%
-  left_join(demographic_data_clean, by = "SEQN")
+  left_join(demographic_data_clean, by = "SEQN") %>%
+  mutate(
+    sex = factor(sex, levels = c(1,2), labels = c("Male", "Female")),
+    education = factor(education, levels = c(1, 2, 3), 
+                       labels = c("Less than HS", "HS equivalent", "More than HS"))
+  )
 ```
 
-Then, we make sure that the categorical variables, such as sex and education, are appropriately encoded as factors.
-```{r encode_merged}
-merged_data = merged_data %>%
-  mutate(
-    sex = factor(sex, levels = c(1, 2), labels = c("Male", "Female")),
-    education = factor(education, levels = c(1:5), labels = c("Less than HS", "HS diploma", "Some college", "College graduate", "Graduate degree"))
-  )
+#### Next, we create a table showing the number of men and women in each education category.
+
+```{r p2_table}
+library(knitr)
+
+education_sex_table = merged_data %>%
+  filter(!is.na(education)) %>%
+  distinct(SEQN, .keep_all = TRUE) %>%
+  count(education, sex) %>%
+  pivot_wider(names_from = sex, values_from = n, values_fill = 0)
+
+print(education_sex_table)
+
+library(knitr)
+kable(education_sex_table, caption = "Number of Men and Women in Each Education Category")
 ```
 
 
