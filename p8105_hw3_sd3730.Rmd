@@ -316,4 +316,8 @@ ggplot(ride_duration_summary, aes(x = weekdays, y = median_duration, color = mon
        x = "Day of the Week", y = "Median Ride Duration (minutes)") +
   theme_minimal()
 ```
+The graph shows clear differences in median ride duration between January and July for both years (2020 and 2024). January (represented by the purple line) tends to have relatively lower median ride durations, typically ranging from about 7.5 to 12.5 minutes across the days of the week. In contrast, July (represented by the yellow line) exhibits higher median ride durations, peaking around 15 minutes on certain days, especially during the weekends.
+* The notable increase in median ride duration in July suggests that riders may be utilizing the Citi Bike system more for leisure activities during the warmer months, leading to longer ride times compared to January, which is likely influenced by colder weather and potential commuting patterns.
+* For 2024, the trend of longer rides in July compared to January persists, but there appears to be some variation in ride durations compared to 2020.
+* The graph highlights different patterns across the days of the week. In January, median ride durations do not vary much throughout the week, suggesting more consistent, perhaps commuter-based usage. In July, the ride durations show a greater fluctuation throughout the week, with weekends generally having higher ride times. This could reflect increased recreational usage on weekends, with more riders taking longer leisure rides.
 
