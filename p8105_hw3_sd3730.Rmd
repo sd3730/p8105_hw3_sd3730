@@ -44,7 +44,7 @@ This dataset contains `r nrow(ny_noaa)` rows and `r ncol(ny_noaa)` columns. Vari
 
 Below we clean the data, creating separate variables for year, month, and day and converting `tmax` and `tmin` to numeric. We find that 0 is the most commonly observed value for snowfall. This is because most days of the year, it does not snow at all in NY. The second most commonly observed value is `NA`, indicating missingness. Other common values are 13, 25, and 51, suggesting that snowfall is originally recorded in fractions of an inch and converted to mm.
 
-```{r cleandata}
+```{r cleandata, message = FALSE}
 ny_noaa %>% 
   count(snow) %>%
   arrange(desc(n))
@@ -61,7 +61,7 @@ ny_noaa =
 
 Below is a two-panel plot showing the average max temperature in January and in July in each station across years.
 
-```{r twopanel}
+```{r twopanel, message = FALSE}
 ny_noaa %>% 
   group_by(id, year, month) %>% 
   filter(month %in% c(1, 7)) %>% 
@@ -77,7 +77,7 @@ The mean temperature in January is much lower than the mean temperature in July 
 
 Below we show a two-panel plot including (i) a hex plot of `tmax` vs `tmin` for the full dataset; and (ii) a ridge plot showing the distribution of snowfall values (in mm) greater than 0 and less than 100 separately by year. 
 
-```{r ridgeplot}
+```{r ridgeplot, message = FALSE}
 hex = 
   ny_noaa %>% 
   ggplot(aes(x = tmin, y = tmax)) + 
@@ -183,14 +183,14 @@ The histogram displays the age distributions of men and women across different e
 #### Total Activity by Age and Education, Separated by Sex
 
 Aggregate MIMS values to total activity for each participant
-```{r agg_mim}
+```{r agg_mim, message = FALSE}
 total_activity_data <- merged_data %>%
   group_by(SEQN, age, sex, education) %>%
   summarize(total_activity = sum(value, na.rm = TRUE))
 ```
 
 Plot total activity vs age, separated by sex and education level
-```{r activity_plot}
+```{r activity_plot, message = FALSE}
 ggplot(total_activity_data, aes(x = age, y = total_activity, color = sex)) +
   geom_point(alpha = 0.5) +
   geom_smooth(method = "loess") +
@@ -207,7 +207,7 @@ The plot illustrates total daily activity (in MIMS) against age for different ed
 
 #### 24-Hour Activity Time Course by Education Level and Sex
 Summarize MIMS values over the course of a day by hour
-```{r sum_mim}
+```{r sum_mim, message = FALSE}
 activity_time_course = merged_data %>%
   group_by(minute, sex, education) %>%
   summarise(mean_activity = mean(value, na.rm = TRUE)) %>%
@@ -250,13 +250,17 @@ Overall, this graph illustrates clear daily rhythms of physical activity that va
 # Problem 3
 
 #### Import the NYC Citi Bike System data
-```{r p3_setup}
+```{r p3_setup, message = FALSE}
 library(lubridate)
 
-jan2020 = read_csv("./citibike/Jan 2020 Citi.csv")
-jan2024 = read_csv("./citibike/Jan 2024 Citi.csv")
-july2020 = read_csv("./citibike/July 2020 Citi.csv")
-july2024 = read_csv("./citibike/July 2024 Citi.csv")
+jan2020 = read_csv("./citibike/Jan 2020 Citi.csv") %>%
+  mutate(month = "January", year = 2020)
+jan2024 = read_csv("./citibike/Jan 2024 Citi.csv") %>%
+  mutate(month = "January", year = 2020)
+july2020 = read_csv("./citibike/July 2020 Citi.csv") %>%
+  mutate(month = "July", year = 2020)
+july2024 = read_csv("./citibike/July 2024 Citi.csv") %>%
+  mutate(month = "July", year = 2024)
 
 citi_bike_data = bind_rows(jan2020, jan2024, july2020, july2024)
 ```
@@ -273,3 +277,5 @@ citi_bike_data = citi_bike_data %>%
   
   filter(duration > 0 & duration < 240)
 ```
+
+
