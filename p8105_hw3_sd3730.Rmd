@@ -291,10 +291,10 @@ From January 2020 to July 2024, there is a clear upward trend in the total numbe
 
 #### Popular starting stations for July 2024
 ```{r pop_stations}
-july_2024_data <- citi_bike %>%
+july_2024_data = citi_bike %>%
   filter(year == 2024 & month == "July")
 
-top_stations <- july_2024_data %>%
+top_stations = july_2024_data %>%
   group_by(start_station_name) %>%
   summarise(num_rides = n()) %>%
   arrange(desc(num_rides)) %>%
@@ -302,3 +302,18 @@ top_stations <- july_2024_data %>%
 
 kable(top_stations, caption = "Top 5 Most Popular Starting Stations in July 2024")
 ```
+
+#### Effect of day, month, and year on median ride duration
+```{r duration}
+ride_duration_summary = citi_bike %>%
+  group_by(year, month, weekdays) %>%
+  summarise(median_duration = median(duration), .groups = "drop")
+
+ggplot(ride_duration_summary, aes(x = weekdays, y = median_duration, color = month)) +
+  geom_line(aes(group = interaction(month, year))) +
+  facet_wrap(~ year) +
+  labs(title = "Median Ride Duration by Day of the Week, Month, and Year",
+       x = "Day of the Week", y = "Median Ride Duration (minutes)") +
+  theme_minimal()
+```
+
