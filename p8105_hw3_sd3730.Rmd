@@ -272,5 +272,14 @@ citi_bike_data <- citi_bike %>%
   mutate(duration = as.numeric(duration))
 ```
 
+#### Total number of rides by year and month
+```{r sum_table, message = FALSE}
+rides_summary = citi_bike_data %>%
+   group_by(year, month, member_casual) %>%
+  summarize(total_rides = n(), .groups = 'drop') %>%
+  pivot_wider(names_from = member_casual, values_from = total_rides, values_fill = list(total_rides = 0))
 
+library(knitr)
+kable(rides_summary, caption = "Total Rides by Year, Month, and Membership Type")
+```
 
