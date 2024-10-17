@@ -154,8 +154,10 @@ kable(education_sex_table, caption = "Number of Men and Women in Each Education 
 ```
 
 The table shows that among participants with less than a high school education, there are slightly more females (28) than males (27). This suggests a relatively balanced distribution between genders in this category. 
-In the HS equivalent category, the male count (35) is higher than the female count (23). This may indicate a trend where more males than females have completed high school, though the gap is not very large.
-The category with the highest counts is the "More than HS" category, where there are 56 males compared to 59 females. This demonstrates that women in this group slightly outnumber men. The data suggests that a significant portion of both genders continues their education beyond high school, with a slight female majority in higher education.
+
+* In the HS equivalent category, the male count (35) is higher than the female count (23). This may indicate a trend where more males than females have completed high school, though the gap is not very large.
+* The category with the highest counts is the "More than HS" category, where there are 56 males compared to 59 females. This demonstrates that women in this group slightly outnumber men. The data suggests that a significant portion of both genders continues their education beyond high school, with a slight female majority in higher education.
+
 Overall, the data indicates that females are represented slightly more in the less than HS and more than HS categories, while males are slightly more represented in the HS equivalent category. This could point to varying educational trends and social factors affecting education levels by gender within this population.
 This distribution can prompt further analysis into factors that influence educational attainment, such as socioeconomic status, cultural expectations, and access to educational resources for each gender.
 
@@ -178,7 +180,12 @@ ggplot(merged_data, aes(x = age, fill = sex)) +
   theme_minimal()
 ```
 
-The histogram displays the age distributions of men and women across different education levels, allowing for a comparative analysis between sexes within each education category. In the 'Less than HS' category, there are slightly more women than men, with ages primarily concentrated in the lower age brackets. Conversely, in the 'More than HS' category, men and women appear to have similar age distributions, but women are slightly more prevalent in the older age groups.The data indicates that younger men tend to have a higher representation in the 'HS equivalent' and 'More than HS' categories compared to women, who show a more balanced distribution across ages in the same education levels.The age distribution for both sexes in the 'More than HS' category shows a pronounced peak around the mid-30s, suggesting that this group may be more engaged in higher education or career advancement at that age. Overall, this visualization underscores the importance of educational attainment and its relationship with age demographics, providing valuable insights for understanding the socio-economic landscape among different genders.
+The histogram displays the age distributions of men and women across different education levels, allowing for a comparative analysis between sexes within each education category. 
+
+* In the 'Less than HS' category, there are slightly more women than men, with ages primarily concentrated in the lower age brackets. Conversely, in the 'More than HS' category, men and women appear to have similar age distributions, but women are slightly more prevalent in the older age groups.The data indicates that younger men tend to have a higher representation in the 'HS equivalent' and 'More than HS' categories compared to women, who show a more balanced distribution across ages in the same education levels.
+* The age distribution for both sexes in the 'More than HS' category shows a pronounced peak around the mid-30s, suggesting that this group may be more engaged in higher education or career advancement at that age. 
+
+Overall, this visualization underscores the importance of educational attainment and its relationship with age demographics, providing valuable insights for understanding the socio-economic landscape among different genders.
 
 #### Total Activity by Age and Education, Separated by Sex
 
@@ -203,7 +210,13 @@ ggplot(total_activity_data, aes(x = age, y = total_activity, color = sex)) +
   theme_minimal()
 ```
 
-The plot illustrates total daily activity (in MIMS) against age for different educational levels, separated by sex. Each panel represents a unique education level category: "Less than HS," "HS equivalent," "More than HS," and "NA." There is a noticeable decline in total daily activity with increasing age across all education levels. This suggests that as participants grow older, their physical activity decreases, which aligns with common findings in physical activity research. In the "Less than HS" and "More than HS" panels, men (represented by the dark purple line) tend to exhibit higher total daily activity levels than women (represented by the yellow line) throughout most age ranges. However, in the "HS equivalent" panel, the gap between male and female activity levels appears narrower, suggesting that educational attainment may influence the disparity in activity levels between sexes. The trend lines for both sexes show a consistent downward trajectory as age increases, indicating that both men and women become less active as they age. Notably, the younger age group (20-30 years) shows higher activity levels, particularly for those with "More than HS" education, while older age groups experience a significant decline. Overall, the findings suggest that education level plays a significant role in physical activity levels across age groups, with men generally being more active than women. These insights can inform future health interventions aimed at promoting physical activity, particularly targeting older adults and addressing gender disparities in activity levels.
+The plot illustrates total daily activity (in MIMS) against age for different educational levels, separated by sex. Each panel represents a unique education level category: "Less than HS," "HS equivalent," "More than HS," and "NA." 
+
+* There is a noticeable decline in total daily activity with increasing age across all education levels. This suggests that as participants grow older, their physical activity decreases, which aligns with common findings in physical activity research. In the "Less than HS" and "More than HS" panels, men (represented by the dark purple line) tend to exhibit higher total daily activity levels than women (represented by the yellow line) throughout most age ranges. 
+* However, in the "HS equivalent" panel, the gap between male and female activity levels appears narrower, suggesting that educational attainment may influence the disparity in activity levels between sexes. The trend lines for both sexes show a consistent downward trajectory as age increases, indicating that both men and women become less active as they age. 
+* Notably, the younger age group (20-30 years) shows higher activity levels, particularly for those with "More than HS" education, while older age groups experience a significant decline. 
+
+Overall, the findings suggest that education level plays a significant role in physical activity levels across age groups, with men generally being more active than women. These insights can inform future health interventions aimed at promoting physical activity, particularly targeting older adults and addressing gender disparities in activity levels.
 
 #### 24-Hour Activity Time Course by Education Level and Sex
 Summarize MIMS values over the course of a day by hour
@@ -335,4 +348,9 @@ ggplot(data_2024, aes(x = month, y = duration, fill = member_casual)) +
        x = "Month", y = "Ride Duration (minutes)") +
   theme_minimal()
 ```
+The graph compares the ride duration distributions for two types of bikes (classic and electric) across two months (January and July) and separates them by membership status (casual vs. member). The boxplots provide a clear visualization of the median, quartiles, and potential outliers in ride duration for each category.
 
+* January shows lower overall ride durations for both types of bikes compared to July. This is consistent with the expectation that colder weather in January may discourage longer rides, while warmer summer conditions in July encourage more leisure riding. In July, both bike types exhibit significantly longer ride durations, with the potential for casual riders taking advantage of the good weather for extended rides.
+* For both months, members (represented by the yellow boxes) consistently show longer median ride durations compared to casual riders (represented by the purple boxes). This indicates that members are likely using the bikes more frequently and for longer periods, possibly for commuting or regular exercise.
+* Both months display a significant number of outliers, particularly for longer ride durations. This suggests that some rides, especially in July, may be much longer than the typical use case, possibly due to recreational biking or group rides.
+* The graph allows for a comparison between electric and classic bikes. While the overall patterns are similar, any differences in the ride duration distributions could suggest varying user preferences or behaviors based on bike type.
