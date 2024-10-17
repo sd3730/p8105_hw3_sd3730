@@ -290,3 +290,15 @@ From January 2020 to July 2024, there is a clear upward trend in the total numbe
 * In January 2020, member rides (11,436) vastly outnumbered casual rides (984), showcasing the Citi Bike system's initial reliance on memberships. By July 2024, although member rides still exceed casual rides, the gap has narrowed significantly, suggesting that casual riders are becoming a larger part of the user base. The growth in casual riders is particularly notable given that the system has traditionally catered more to members, highlighting a shift in biking culture and increased accessibility.
 
 #### Popular starting stations for July 2024
+```{r pop_stations}
+july_2024_data <- citi_bike %>%
+  filter(year == 2024 & month == "July")
+
+top_stations <- july_2024_data %>%
+  group_by(start_station_name) %>%
+  summarise(num_rides = n()) %>%
+  arrange(desc(num_rides)) %>%
+  slice_head(n = 5) 
+
+kable(top_stations, caption = "Top 5 Most Popular Starting Stations in July 2024")
+```
