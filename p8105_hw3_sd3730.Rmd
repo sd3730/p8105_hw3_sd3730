@@ -283,3 +283,10 @@ library(knitr)
 kable(rides_summary, caption = "Total Rides by Year, Month, and Membership Type")
 ```
 
+From January 2020 to July 2024, there is a clear upward trend in the total number of rides for both casual users and members. In January 2020, there were 12,420 rides in total (984 casual + 11,436 members), which increased significantly to 47,156 rides in July 2024 (10,894 casual + 36,262 members). This suggests a strong overall growth in the popularity of the Citi Bike system over the four-year period.
+* The data shows a consistent pattern where July sees significantly higher ride counts compared to January. This is expected due to warmer weather, which encourages biking for both leisure and commuting purposes.
+* Casual rides have increased from 984 in January 2020 to 10,894 in July 2024. This indicates a growth in the number of people using Citi Bike for leisure and recreational activities, possibly spurred by the COVID-19 pandemic as more people turned to biking as a safe alternative to public transport.
+* Member rides also show substantial growth, from 11,436 in January 2020 to 36,262 in July 2024. This suggests that more individuals are opting for membership, likely due to the cost-effectiveness and convenience of being a member. The increase in member rides during both winter and summer months indicates that members are using the service consistently throughout the year, not just in peak biking months.
+* In January 2020, member rides (11,436) vastly outnumbered casual rides (984), showcasing the Citi Bike system's initial reliance on memberships. By July 2024, although member rides still exceed casual rides, the gap has narrowed significantly, suggesting that casual riders are becoming a larger part of the user base. The growth in casual riders is particularly notable given that the system has traditionally catered more to members, highlighting a shift in biking culture and increased accessibility.
+
+#### Popular starting stations for July 2024
